@@ -10,6 +10,26 @@
 </head>
 
 <body>
+    <header>
+        <div id="container">
+            <div id="start">Start Quiz</div>
+                <p>text for starting quiz</p>
+            <div id="quiz" style="display:none">
+                <div id="question"></div>   
+                <div id="choices"               >
+                    <div class="choice" id="A"
+                    onclick="checkanswer('A')"></div>
+                    <div class="choice" id="B"
+                    onclick="checkanswer('B')"></div>
+                    <div class="choice" id="C"
+                    onclick="checkanswer('C')"></div>
+                    <div class="choice" id="D"
+                    onclick="checkanswer('D')"></div>
+                </div>
+                <div id="timer"></div>
+                </div>
+            <div id="score" style="display:none"></div>
+        </div>
 
   <script src="./assets/js/script.js"></script>
 </body>
