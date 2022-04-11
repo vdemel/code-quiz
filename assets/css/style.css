@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background: #007bff;
+}
+
+.start {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* start quiz button styling */
+.start button {
+    font-size: 25px;
+    font-weight: 500;
+    color: #007bff;
+    padding: 15px 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+}
+
+header p {
+    width: 540px;
+    background: #fff;
+    border-radius: 5px;
+    color: #007bff;
+    font-size: 25px;
+    position: relative;
+    left: 700px;
+    padding: 10px;
+}

@@ -8,6 +8,7 @@ const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const choiceD = document.getElementById("D");
 const timer = document.getElementById("timer");
+const counter = document.getElementById("counter");
 const score = document.getElementById("score");
 
 // create questions
@@ -60,22 +61,31 @@ function askQuestion() {
 
 }
 
+start.style.display = "none";
+askQuestion();
+quiz.style.display = "block";
+
 start.addEventListener("click",startQuiz);
 
 // start quiz
 
 function startQuiz() {
-
+    start.style.display = "none";
+    askQuestion();
+    quiz.style.display = "block";
+    timer = setInterval(showCounter,-1000);
 }
 
-start.style.display = "none";
-askQuestion();
-quiz.style.display = "block";
-timer = 75;
-score = 0;
+// timer
+
+
+function showCounter() {
+    timer --;
+}
 
 function checkAnswer(answer){
     if(answer == questions[runningQuestion].correct){
-        score ++
+        score ++;
     }
+    else(timer--);
 }
