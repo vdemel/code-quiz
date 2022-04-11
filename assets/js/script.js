@@ -43,3 +43,39 @@ let questions = [
         correct : "A"
     }
 ];
+
+const lastQuestion = questions.length - 1;
+let runningQuestion = 0;
+
+// ask a question
+
+function askQuestion() {
+    let q = questions[runningQuestion];
+
+    question.innerHTML = "<p>" + q.question + "</p>";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML - q.choiceD;
+
+}
+
+start.addEventListener("click",startQuiz);
+
+// start quiz
+
+function startQuiz() {
+
+}
+
+start.style.display = "none";
+askQuestion();
+quiz.style.display = "block";
+timer = 75;
+score = 0;
+
+function checkAnswer(answer){
+    if(answer == questions[runningQuestion].correct){
+        score ++
+    }
+}
