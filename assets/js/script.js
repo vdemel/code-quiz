@@ -79,37 +79,39 @@ function clearStatusClass(element) {
 
 const questions = [
     {
-        question: 'What is 2 + 2?',
+        question: 'String values must be enclosed within ______ when being assigned to variables.',
         answers: [
-            {text: '4', correct: true},
-            {text: '22', correct: false}
+            {text: 'commas', correct: false},
+            {text: 'curly brackets', correct: false},
+            {text: 'quotes', correct: true},
+            {text: 'parenthesis', correct: false}
         ]
     },
     {
-        question: 'Who is the best YouTuber?',
+        question: 'Commonly used data types do not include:',
         answers: [
-            {text: 'Web Dev Simplified', correct: true},
-            {text: 'Traversy Media', correct: false},
-            {text: 'Dev Ed', correct: false},
-            {text: 'Fun Fun Function', correct: false}
+            {text: 'strings', correct: false},
+            {text: 'booleans', correct: false},
+            {text: 'alerts', correct: true},
+            {text: 'numbers', correct: false}
         ]
     },
     {
-        question: 'Who is the best YouTuber?',
+        question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
         answers: [
-            {text: 'Web Dev Simplified', correct: true},
-            {text: 'Traversy Media', correct: false},
-            {text: 'Dev Ed', correct: false},
-            {text: 'Fun Fun Function', correct: false}
+            {text: 'JavaScript', correct: false},
+            {text: 'terminal/bash', correct: false},
+            {text: 'for loops', correct: false},
+            {text: 'console.log', correct: true}
         ]
     },
     {
-        question: 'Who is the best YouTuber?',
+        question: 'The condition in an if/else statement is enclosed with _______.',
         answers: [
-            {text: 'Web Dev Simplified', correct: true},
-            {text: 'Traversy Media', correct: false},
-            {text: 'Dev Ed', correct: false},
-            {text: 'Fun Fun Function', correct: false}
+            {text: 'quotes', correct: false},
+            {text: 'curly brackets', correct: true},
+            {text: 'parenthesis', correct: false},
+            {text: 'square brackets', correct: false}
         ]
     },
 ]
