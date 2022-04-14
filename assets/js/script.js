@@ -3,9 +3,16 @@ const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
-const timerElement = document.getElementById('timer')
+const timeLeftElement = document.getElementById('time-left')
+const scoreContainerElement = document.getElementById('score-container')
+const score = document.getElementById('score')
 
 let shuffledQuestions, currentQuestionIndex
+// let timeLeft = 75
+// let timerElement = setInterval(timeLeft,-1000)
+
+// localStorage.setItem('score', timeLeft);
+
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
@@ -59,8 +66,10 @@ function selectAnswer(e) {
     if (shuffledQuestions.length > currentQuestionIndex +1)
     nextButton.classList.remove('hide')
     else {
-        startButton.innerText = 'Restart'
-        startButton.classList.remove('hide')
+        // startButton.innerText = 'Restart'
+        // startButton.classList.remove('hide')
+        // scoreContainerElement.remove('hide')
+        // localStorage.getItem('score')
     }
 }
 
@@ -77,6 +86,21 @@ function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
 }
+
+// var timer = setInterval(function() {
+//     if (timeLeftElement > 1 {
+//         timerEl.textContent = "Timer " + timeLeftElement;
+//         timeLeftElement--;
+//     }
+//     else if (answerChoice = wrong){
+//         timeLeftElement -15;
+//     }
+// })
+
+// function getScore() {
+//     scoreContainerElement.remove('hide')
+//     score.textContent = "Your score is" + timeLeft;
+// }
 
 const questions = [
     {
