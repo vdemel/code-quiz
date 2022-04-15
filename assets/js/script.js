@@ -4,14 +4,55 @@ const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 var timerEl = document.getElementById('countdown')
-var displayMessage = document.getElementById('score')
 
 let shuffledQuestions, currentQuestionIndex
 
+var timeLeft = 75;
+var timeInterval = 0;
+
+// questions and answers for the quiz
+const questions = [
+    {
+        question: 'String values must be enclosed within ______ when being assigned to variables.',
+        answers: [
+            {text: 'commas', correct: false},
+            {text: 'curly brackets', correct: false},
+            {text: 'quotes', correct: true},
+            {text: 'parenthesis', correct: false}
+        ]
+    },
+    {
+        question: 'Commonly used data types do not include:',
+        answers: [
+            {text: 'strings', correct: false},
+            {text: 'booleans', correct: false},
+            {text: 'alerts', correct: true},
+            {text: 'numbers', correct: false}
+        ]
+    },
+    {
+        question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
+        answers: [
+            {text: 'JavaScript', correct: false},
+            {text: 'terminal/bash', correct: false},
+            {text: 'for loops', correct: false},
+            {text: 'console.log', correct: true}
+        ]
+    },
+    {
+        question: 'The condition in an if/else statement is enclosed with _______.',
+        answers: [
+            {text: 'quotes', correct: false},
+            {text: 'curly brackets', correct: true},
+            {text: 'parenthesis', correct: false},
+            {text: 'square brackets', correct: false}
+        ]
+    },
+]
+
 // timer that counts down from 75
 function countdown() {
-    var timeLeft = 75;
-
+   
     var timeInterval = setInterval(function() {
         if (timeLeft > 1) {
             timerEl.textContent = timeLeft + ' seconds remaining';
@@ -70,9 +111,11 @@ function resetState() {
     }
 }
 
-// function displayMessage() {
-//     'Your final score is: ' + timeLeft
-// }
+function endGame() {
+    clearInterval(timeInterval);
+    localStorage.getItem("time-left",timeLeft);
+    'Your final score is ' + timeLeft;
+}
 
 // function to check whether the answer is correct and see if there are more questions remaining
 function selectAnswer(e) {
@@ -85,8 +128,13 @@ function selectAnswer(e) {
     if (shuffledQuestions.length > currentQuestionIndex + 1)
     nextButton.classList.remove('hide')
     else {
-        'Your final score is: ' + timeLeft
+        endGame();
     }
+}
+
+//save time left to local storage to retrieve at the end of the game
+function saveTime() {
+    localStorage.setItem("time-left", timeLeft);
 }
 
 function setStatusClass(element, correct) {
@@ -94,7 +142,8 @@ function setStatusClass(element, correct) {
     if (correct) {
         element.classList.add('correct')
     } else {
-        element.classList.add('wrong')
+        element.classList.add('wrong');
+        timeInterval-10;
     }
 }
 
@@ -103,44 +152,5 @@ function clearStatusClass(element) {
     element.classList.remove('wrong')
 }
 
-// questions and answers for the quiz
-const questions = [
-    {
-        question: 'String values must be enclosed within ______ when being assigned to variables.',
-        answers: [
-            {text: 'commas', correct: false},
-            {text: 'curly brackets', correct: false},
-            {text: 'quotes', correct: true},
-            {text: 'parenthesis', correct: false}
-        ]
-    },
-    {
-        question: 'Commonly used data types do not include:',
-        answers: [
-            {text: 'strings', correct: false},
-            {text: 'booleans', correct: false},
-            {text: 'alerts', correct: true},
-            {text: 'numbers', correct: false}
-        ]
-    },
-    {
-        question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
-        answers: [
-            {text: 'JavaScript', correct: false},
-            {text: 'terminal/bash', correct: false},
-            {text: 'for loops', correct: false},
-            {text: 'console.log', correct: true}
-        ]
-    },
-    {
-        question: 'The condition in an if/else statement is enclosed with _______.',
-        answers: [
-            {text: 'quotes', correct: false},
-            {text: 'curly brackets', correct: true},
-            {text: 'parenthesis', correct: false},
-            {text: 'square brackets', correct: false}
-        ]
-    },
-]
 
 countdown();
