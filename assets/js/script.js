@@ -3,9 +3,8 @@ const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
-const timeLeftElement = document.getElementById('time-left')
 var timerEl = document.getElementById('countdown')
-
+var displayMessage = document.getElementById('score')
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -32,6 +31,7 @@ nextButton.addEventListener('click', () => {
     setNextQuestion()
 })
 
+// function to start game by showing questions and hiding the start button
 function startGame() {
     startButton.classList.add('hide')
     shuffledQuestions = questions.sort(() => Math.random() - .5)
@@ -40,6 +40,7 @@ function startGame() {
     setNextQuestion()
 }
 
+// function to show the next question, create buttons for answers and add attributes if the question is answered correctly
 function setNextQuestion() {
     resetState()
     showQuestion(shuffledQuestions[currentQuestionIndex])
@@ -59,6 +60,7 @@ function showQuestion(question) {
     })
 }
 
+// resets the form back to default state so the next question can be shown
 function resetState() {
     clearStatusClass(document.body)
     nextButton.classList.add('hide')
@@ -68,6 +70,11 @@ function resetState() {
     }
 }
 
+// function displayMessage() {
+//     'Your final score is: ' + timeLeft
+// }
+
+// function to check whether the answer is correct and see if there are more questions remaining
 function selectAnswer(e) {
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
@@ -75,13 +82,10 @@ function selectAnswer(e) {
     Array.from(answerButtonsElement.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
-    if (shuffledQuestions.length > currentQuestionIndex +1)
+    if (shuffledQuestions.length > currentQuestionIndex + 1)
     nextButton.classList.remove('hide')
     else {
-        // startButton.innerText = 'Restart'
-        // startButton.classList.remove('hide')
-        // scoreContainerElement.remove('hide')
-        // localStorage.getItem('score')
+        'Your final score is: ' + timeLeft
     }
 }
 
@@ -99,6 +103,7 @@ function clearStatusClass(element) {
     element.classList.remove('wrong')
 }
 
+// questions and answers for the quiz
 const questions = [
     {
         question: 'String values must be enclosed within ______ when being assigned to variables.',
