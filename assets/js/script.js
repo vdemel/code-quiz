@@ -4,15 +4,27 @@ const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const timeLeftElement = document.getElementById('time-left')
-const scoreContainerElement = document.getElementById('score-container')
-const score = document.getElementById('score')
+var timerEl = document.getElementById('countdown')
+
 
 let shuffledQuestions, currentQuestionIndex
-// let timeLeft = 75
-// let timerElement = setInterval(timeLeft,-1000)
 
-// localStorage.setItem('score', timeLeft);
+// timer that counts down from 75
+function countdown() {
+    var timeLeft = 75;
 
+    var timeInterval = setInterval(function() {
+        if (timeLeft > 1) {
+            timerEl.textContent = timeLeft + ' seconds remaining';
+            timeLeft--;
+        } else if (timeLeft === 1) {
+            timerEl.textContent = timeLeft + ' second remaining';
+            timeLeft--;
+        } else {
+            timerEl.textContent = '';
+        }
+    }, 1000);
+}
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
@@ -87,21 +99,6 @@ function clearStatusClass(element) {
     element.classList.remove('wrong')
 }
 
-// var timer = setInterval(function() {
-//     if (timeLeftElement > 1 {
-//         timerEl.textContent = "Timer " + timeLeftElement;
-//         timeLeftElement--;
-//     }
-//     else if (answerChoice = wrong){
-//         timeLeftElement -15;
-//     }
-// })
-
-// function getScore() {
-//     scoreContainerElement.remove('hide')
-//     score.textContent = "Your score is" + timeLeft;
-// }
-
 const questions = [
     {
         question: 'String values must be enclosed within ______ when being assigned to variables.',
@@ -140,3 +137,5 @@ const questions = [
         ]
     },
 ]
+
+countdown();
